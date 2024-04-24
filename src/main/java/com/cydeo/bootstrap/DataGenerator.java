@@ -25,7 +25,7 @@ public class DataGenerator implements CommandLineRunner {
         // User Roles
         UserRoleDTO adminRole = new UserRoleDTO(1L, "Admin");
         UserRoleDTO managerRole = new UserRoleDTO(2L, "Manager");
-        UserRoleDTO employeeRole = new UserRoleDTO(1L, "Employee");
+        UserRoleDTO employeeRole = new UserRoleDTO(3L, "Employee");
 
 
         // .save()
