@@ -24,6 +24,11 @@ public class UserRoleServiceImpl extends AbstractMapService<UserRoleDTO, Long> i
     }
 
     @Override
+    public void update(UserRoleDTO object) {
+        super.update(object.getId(),object);
+    }
+
+    @Override
     public UserRoleDTO findBy(Long id) {
         return super.findById(id);
     }

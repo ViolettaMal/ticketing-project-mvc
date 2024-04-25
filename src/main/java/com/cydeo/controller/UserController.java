@@ -6,10 +6,7 @@ import com.cydeo.service.UserService;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @Component
@@ -39,11 +36,20 @@ public class UserController {
         return "redirect:/user/create";
     }
 
+    @GetMapping("/update/{username}")
+    public String editUser(@PathVariable("username") String username, Model model){
 
-    @PostMapping("/update")
-    public String updateUser(){
+        model.addAttribute("user", userService.findBy(username));
+        model.addAttribute("roles", userRoleService.findAll());
+        model.addAttribute("userList", userService.findAll());
 
         return "/user/update";
+    }
+
+    @PostMapping("/update/{username}")
+    public String updateUser(@PathVariable("username") String username, UserDTO userDTO){
+        userService.update(userDTO);
+        return "redirect:/user/create";
     }
 
 
